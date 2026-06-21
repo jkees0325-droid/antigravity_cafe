@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>고려대 카페 큐레이터 | KU Cafe Curator</title>
+  <meta name="description" content="고려대학교 안암 캠퍼스 구성원을 위한 맞춤형 목적별 카페 추천 및 참여형 등록 서비스">
+  <link rel="stylesheet" href="index.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo-area">
+        <div class="logo-symbol">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 11.5H16M8 14.5H13M9 8.5H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>KU CAFE <span class="highlight">CURATOR</span></h1>
+          <p>고려대 안암 캠퍼스 주변 맞춤형 카페 추천</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-primary" id="open-register-modal-btn">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          카페 등록하기
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="app-main">
+    <!-- Filter Sidebar / Panel -->
+    <section class="filter-section">
+      <div class="filter-card">
+        <div class="filter-header">
+          <div class="filter-title">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            필터 조건 설정
+          </div>
+          <button id="reset-filters-btn" class="btn-text">초기화</button>
+        </div>
+
+        <div class="filter-groups">
+          <!-- Search input for quick finding -->
+          <div class="filter-group">
+            <label class="filter-label">카페 이름 검색</label>
+            <div class="search-input-wrapper">
+              <input type="text" id="search-input" placeholder="카페 이름을 입력하세요...">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Location Filter -->
+          <div class="filter-group">
+            <label class="filter-label">위치 선택</label>
+            <div class="pill-group" id="location-pills">
+              <button class="pill active" data-value="all">전체</button>
+              <button class="pill" data-value="참살이길">참살이길</button>
+              <button class="pill" data-value="개운사길">개운사길</button>
+              <button class="pill" data-value="정후">정후</button>
+              <button class="pill" data-value="법후">법후</button>
+              <button class="pill" data-value="교내">교내</button>
+            </div>
+          </div>
+
+          <!-- Purpose Filter -->
+          <div class="filter-group">
+            <label class="filter-label">방문 목적 (중복 가능)</label>
+            <p class="filter-helper-text">💡 선택한 목적 중 하나라도 해당하는 카페를 보여줍니다.</p>
+            <div class="checkbox-group" id="purpose-checkboxes">
+              <label class="custom-checkbox">
+                <input type="checkbox" value="카공">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">카공</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" value="밥약">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">밥약 후 디저트</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" value="디저트">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">디저트 맛집</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" value="수다/감성">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">수다 / 감성 카페</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" value="테이크아웃">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">테이크아웃</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Operating Hours Filter -->
+          <div class="filter-group">
+            <label class="filter-label">영업 시간대 (중복 가능)</label>
+            <p class="filter-helper-text">💡 선택한 시간대 중 하나라도 영업하는 카페를 보여줍니다.</p>
+            <div class="checkbox-group" id="time-checkboxes">
+              <label class="custom-checkbox">
+                <input type="checkbox" value="morning">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">오전/아침 (09시 이전 오픈)</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" value="afternoon">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">오후 (낮 시간 운영)</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" value="evening">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">저녁 (21시 이후 영업)</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" value="night">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">심야 (23시 이후/24시)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Utility Switches -->
+          <div class="filter-group utility-group">
+            <div class="switch-row">
+              <span class="switch-label">현재 영업 중인 카페만</span>
+              <label class="switch">
+                <input type="checkbox" id="open-now-toggle">
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="switch-row">
+              <span class="switch-label">북마크한 카페만 모아보기</span>
+              <label class="switch">
+                <input type="checkbox" id="bookmark-only-toggle">
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-block" id="apply-filters-btn">
+          추천받기
+        </button>
+      </div>
+    </section>
+
+    <!-- Cafe List Container -->
+    <section class="list-section">
+      <div class="list-summary">
+        <span class="results-count">총 <strong id="cafe-count">0</strong>개의 카페가 검색되었습니다.</span>
+      </div>
+
+      <!-- Grid of Cafe Cards -->
+      <div class="cafe-grid" id="cafe-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state hidden" id="empty-state">
+        <div class="empty-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+          </svg>
+        </div>
+        <h3>조건에 맞는 카페가 없습니다.</h3>
+        <p>원하는 필터에 매칭되는 카페가 아직 등록되지 않았습니다.</p>
+        <p class="sub-text">직접 첫 번째 추천 카페를 등록해보는 것은 어떨까요?</p>
+        <button class="btn btn-secondary" id="empty-register-btn">새로운 카페 직접 등록하기</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cafe Registration Modal -->
+  <div class="modal-overlay hidden" id="register-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>새로운 추천 카페 등록</h2>
+        <button class="close-btn" id="close-modal-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      
+      <form id="register-form" onsubmit="return false;">
+        <div class="form-body">
+          <!-- Cafe Name -->
+          <div class="form-group">
+            <label for="reg-name" class="form-label required">카페 이름</label>
+            <input type="text" id="reg-name" class="form-input" placeholder="예: 커피수목원" required>
+          </div>
+
+          <!-- Location Spot -->
+          <div class="form-group">
+            <label class="form-label required">위치 대분류</label>
+            <div class="form-radio-group">
+              <label class="form-radio-label">
+                <input type="radio" name="reg-location" value="참살이길" checked>
+                <span>참살이길</span>
+              </label>
+              <label class="form-radio-label">
+                <input type="radio" name="reg-location" value="개운사길">
+                <span>개운사길</span>
+              </label>
+              <label class="form-radio-label">
+                <input type="radio" name="reg-location" value="정후">
+                <span>정후</span>
+              </label>
+              <label class="form-radio-label">
+                <input type="radio" name="reg-location" value="법후">
+                <span>법후</span>
+              </label>
+              <label class="form-radio-label">
+                <input type="radio" name="reg-location" value="교내">
+                <span>교내</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Purpose -->
+          <div class="form-group">
+            <label class="form-label required">방문 목적 (최소 1개 이상 선택)</label>
+            <div class="form-checkbox-grid">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="reg-purpose" value="카공">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">카공</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="reg-purpose" value="밥약">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">밥약 후 가기 좋음</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="reg-purpose" value="디저트">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">디저트가 특별함</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="reg-purpose" value="수다/감성">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">수다 떨기 편하고 감성적임</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="reg-purpose" value="테이크아웃">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">테이크아웃 편리함</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Operating Hours -->
+          <div class="form-group">
+            <label class="form-label required">영업 시간</label>
+            <div class="form-time-row">
+              <div class="time-input-wrapper">
+                <span>오픈 시간</span>
+                <input type="time" id="reg-open-time" class="form-input" value="09:00" required>
+              </div>
+              <div class="time-separator">~</div>
+              <div class="time-input-wrapper">
+                <span>마감 시간</span>
+                <input type="time" id="reg-close-time" class="form-input" value="22:00" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map Link -->
+          <div class="form-group">
+            <label for="reg-map" class="form-label">포털 지도 링크 (선택)</label>
+            <input type="url" id="reg-map" class="form-input" placeholder="예: https://place.map.kakao.com/... 또는 네이버 지도 링크">
+          </div>
+
+          <!-- One-line review -->
+          <div class="form-group">
+            <label for="reg-review" class="form-label required">한 줄 추천평 (최대 60자)</label>
+            <textarea id="reg-review" class="form-input form-textarea" rows="2" maxlength="60" placeholder="안암 학우들에게 이 카페를 추천하는 핵심 한마디를 적어주세요!" required></textarea>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <button type="button" class="btn btn-secondary" id="cancel-register-btn">취소</button>
+          <button type="submit" class="btn btn-primary" id="submit-cafe-btn">등록하기</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <div class="footer-container">
+      <p>&copy; 2026 KU Cafe Curator. Designed for Korea University students.</p>
+      <p class="school-motto">LIBERTAS, JUSTITIA, VERITAS (자유, 정의, 진리)</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
