@@ -1,23 +1,13 @@
 // Default Cafes Data
 const DEFAULT_CAFES = [
   {
-    id: 'default-1',
-    name: '커피수목원',
-    location: '참살이길',
-    purposes: ['디저트', '수다/감성'],
-    openTime: '10:00',
-    closeTime: '22:30',
-    mapLink: 'https://map.naver.com/p/search/%EC%BB%A4%ED%94%BC%EC%88%98%EB%AA%A9%EC%9B%90/place/38287754',
-    review: '안암에서 수제 와플과 음료가 맛있고 아늑한 다락방 분위기로 대화하기 좋은 디저트 카페.'
-  },
-  {
     id: 'default-2',
     name: '커피빈 고대안암역점',
     location: '개운사길',
     purposes: ['카공', '수다/감성'],
     openTime: '06:30',
     closeTime: '23:59',
-    mapLink: 'https://map.naver.com/p/entry/place/19864205',
+    mapLink: 'https://map.naver.com/v5/search/커피빈 고대안암역점',
     review: '아침 일찍부터 자정 근처까지 영업하며, 콘센트가 많아 카공 및 과제하기 아주 좋습니다.'
   },
   {
@@ -27,7 +17,7 @@ const DEFAULT_CAFES = [
     purposes: ['디저트', '밥약'],
     openTime: '12:00',
     closeTime: '22:00',
-    mapLink: 'https://map.naver.com/p/search/%EC%A0%95%EB%A7%8C%EB%B9%99%EC%88%98%20%EC%95%88%EC%95%9B/place/34720619',
+    mapLink: 'https://map.naver.com/v5/search/정만빙수 안암본점',
     review: '가성비 넘치는 생과일/팥빙수 전문점. 동아리 밥약이나 선후배 모임 직후 디저트로 추천!'
   },
   {
@@ -37,7 +27,7 @@ const DEFAULT_CAFES = [
     purposes: ['테이크아웃', '디저트'],
     openTime: '08:00',
     closeTime: '22:00',
-    mapLink: 'https://map.naver.com/p/search/%EB%8D%94%EB%B2%A4%ED%8B%B0%20%EA%B3%A0%EB%A0%A4%EB%8C%80%EC%97%AD%EC%A0%90/place/1559981881',
+    mapLink: 'https://map.naver.com/v5/search/더벤티 고려대역점',
     review: '법대 후문 근처 가성비의 최강자. 수업 전에 빠르게 테이크아웃하기 좋습니다.'
   },
   {
@@ -47,7 +37,7 @@ const DEFAULT_CAFES = [
     purposes: ['카공', '수다/감성'],
     openTime: '08:30',
     closeTime: '20:00',
-    mapLink: 'https://map.naver.com/p/search/%ED%85%A4%EC%8D%B8%ED%94%8C%EB%A0%88%EC%9D%B4%EC%8A%A4%20%EA%B3%A0%EB%A0%A4%EB%8C%80CJ%EB%B2%95%ED%95%99%EA%B4%80%EC%A0%90/place/31032338',
+    mapLink: 'https://map.naver.com/v5/search/투썸플레이스 고려대법학관점',
     review: 'CJ법학관 1층의 쾌적한 대형 매장. 로스쿨 및 법학관 학생들의 모임이나 공부 장소로 인기.'
   },
   {
@@ -57,7 +47,7 @@ const DEFAULT_CAFES = [
     purposes: ['카공', '수다/감성'],
     openTime: '12:00',
     closeTime: '21:00',
-    mapLink: 'https://map.naver.com/p/search/%EC%95%88%EC%95%9B%20%EC%B9%B4%ED%8E%98J/place/12316499',
+    mapLink: 'https://map.naver.com/v5/search/카페제이 안암',
     review: '개운사길 골목에 숨겨진 조용한 카공 명소. 아늑하고 집중도가 높은 실내 구조가 장점.'
   },
   {
@@ -67,7 +57,7 @@ const DEFAULT_CAFES = [
     purposes: ['디저트', '수다/감성'],
     openTime: '12:00',
     closeTime: '22:00',
-    mapLink: 'https://map.naver.com/p/search/%EB%A9%94%EC%9D%B4%ED%81%AC%EB%AF%B8%ED%95%B4%ED%94%BC/place/1739257697',
+    mapLink: 'https://map.naver.com/v5/search/메이크미해피 안암',
     review: '수제 레몬딜 케이크가 유명하며 아기자기하고 귀여운 인형/소품이 가득한 감성 카페.'
   },
   {
@@ -77,7 +67,7 @@ const DEFAULT_CAFES = [
     purposes: ['카공', '수다/감성'],
     openTime: '11:00',
     closeTime: '01:00',
-    mapLink: 'https://map.naver.com/p/search/%EC%95%88%EC%95%9B%20%EC%BB%A4%ED%94%BC%EC%86%8C/place/13511119',
+    mapLink: 'https://map.naver.com/v5/search/커피소 안암',
     review: '새벽 1시 늦은 시간까지 운영하여 밤샘 공부나 과제하기 좋은 숨겨진 다락 공간.'
   },
   {
@@ -87,7 +77,7 @@ const DEFAULT_CAFES = [
     purposes: ['수다/감성', '디저트'],
     openTime: '12:00',
     closeTime: '22:00',
-    mapLink: 'https://map.naver.com/p/search/%EC%B9%B4%ED%8E%98%20%EC%95%88%EC%95%9B%EB%8F%94/place/1749876251',
+    mapLink: 'https://map.naver.com/v5/search/카페 안암동',
     review: '상호명과 같은 편안하고 아늑한 분위기의 카페. 커피와 달콤한 크림 크로플이 인기 메뉴.'
   }
 ];
@@ -445,6 +435,16 @@ function renderCafes() {
   }
 }
 
+// Sanitizes and formats URL to ensure it starts with http:// or https://
+function formatMapLink(url) {
+  if (!url) return '';
+  url = url.trim();
+  if (url && !/^https?:\/\//i.test(url)) {
+    return 'https://' + url;
+  }
+  return url;
+}
+
 // Create Card HTML Element
 function createCafeCard(cafe) {
   const cardDiv = document.createElement('div');
@@ -464,9 +464,10 @@ function createCafeCard(cafe) {
 
   // Setup Map Link Button HTML
   let mapLinkHTML = '';
-  if (cafe.mapLink) {
+  const formattedLink = formatMapLink(cafe.mapLink);
+  if (formattedLink) {
     mapLinkHTML = `
-      <a href="${cafe.mapLink}" target="_blank" class="card-link-btn">
+      <a href="${formattedLink}" target="_blank" class="card-link-btn">
         지도 보기 
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="7" y1="17" x2="17" y2="7"></line>
